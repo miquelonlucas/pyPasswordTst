@@ -1,9 +1,14 @@
+from re import A
 import time
 import numpy as np
 
 print('Escolha uma senha de 4 a 9 digitos númericos com todos diferentes entre si')
+digitado = input()
+while digitado.isnumeric() == False:
+    print('Escolha uma senha de 4 a 9 digitos NUMÉRICOS com todos diferentes entre si')
+    digitado = input()
 
-password = int(input())
+password = int(digitado)
 nonDuplicate = False
 
 while (password < 1234 or nonDuplicate == False):
