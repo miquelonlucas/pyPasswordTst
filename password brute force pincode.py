@@ -1,27 +1,35 @@
 import time
+import numpy as np
 
-# Fazer como um array para facilitar
-
-print('Escolha uma senha de 9 digitos númericos com todos diferentes entre si')
+print('Escolha uma senha de 4 a 9 digitos númericos com todos diferentes entre si')
 
 password = int(input())
+nonDuplicate = False
 
-while (password < 123456789 | password > 987654321):
+while (password < 1234 or nonDuplicate == False):
     aux = str(password)
     def split(word):
         return [char for char in word]
     x = split(aux)
-    print(type(x))
-    if len(x) > len(set(x)):
-        pass
+    y = np.array(x)
+    z = []
+    for i in y:
+        if i not in z:
+            z.append(i)
+
+    if len(z) == len(y):
+        nonDuplicate = True
     else:
-        print('Escolha uma senha de 9 digitos númericos com todos diferentes entre si')
+        print('Senha não adequada. Escolha uma senha de 9 digitos númericos com todos diferentes entre si')
+        password = int(input()) 
+    if (password < 1234 and nonDuplicate == True):
+        print('Senha não adequada. Escolha uma senha de 9 digitos númericos com todos diferentes entre si')
         password = int(input())
 
 print('Tentaremos obter sua senha com FORÇA BRUTA e verificaremos se ela é forte (concluiremos que não)')
 
 def bruteforce():
-    n = 0
+    n = 1234
     while n != password:
        n += 1
     return n
